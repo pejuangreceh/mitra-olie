@@ -52,6 +52,7 @@ class PengeluaranController extends CI_Controller
 			$data['stoks'] = $this->pengeluaran->show();
 			$data['pemasukkans'] = $this->pengeluaran->show_pemasukkan();
 			$data['new_id'] = $this->get_id_pengeluaran();
+			$data['plat'] = $this->session->userdata('plat_nomor');
 			// $data['pelanggan'] = $this->pengeluaran->show_pelanggan();
 			$this->load->view('template/header');
 			$this->load->view('template/navbar');
@@ -76,7 +77,6 @@ class PengeluaranController extends CI_Controller
 		$data['new_id'] = $this->get_id_pengeluaran();
 
 		$this->form_validation->set_rules('kode_transaksi', 'Kode Transaksi', 'required');
-		$this->form_validation->set_rules('kode_pemasukkan', 'Kode Pemasukkan', 'required');
 		$this->form_validation->set_rules('id_stok', 'Pilih Barang', 'required');
 		// $this->form_validation->set_rules('jumlah_keluar', 'Jumlah Keluar', 'required');
 
@@ -88,7 +88,6 @@ class PengeluaranController extends CI_Controller
 		} else {
 			$data = array(
 				'kode_transaksi'    => $this->input->post('kode_transaksi'),
-				'kode_pemasukkan'    => $this->input->post('kode_pemasukkan'),
 				'id_stok'   => $this->input->post('id_stok'),
 				'plat_nomor'   => $this->input->post('plat_nomor'),
 				'jumlah_keluar'   => 0,
@@ -104,7 +103,7 @@ class PengeluaranController extends CI_Controller
 	}
 	public function detail($id)
 	{
-		$result = $this->pengeluaran->get("WHERE pengeluaran.id = '$id'");
+		$result = $this->pengeluaran->get(" WHERE id = '$id'");
 		$username = $result[0]['username'];
 		$id_stok = $result[0]['id_stok'];
 		$stok = $this->pengeluaran->get_oli("WHERE id = '$id_stok'");
@@ -113,7 +112,6 @@ class PengeluaranController extends CI_Controller
 			'kode_transaksi'      	=> $result[0]['kode_transaksi'],
 			'jumlah_keluar'     	=> $result[0]['jumlah_keluar'],
 			'id_stok'     			=> $result[0]['id_stok'],
-			'kode_pemasukkan'    	=> $result[0]['kode_pemasukkan'],
 			'plat_nomor'    		=> $result[0]['plat_nomor'],
 			'username'     			=> $username[0]['username'],
 			'deskripsi'    			=> $result[0]['deskripsi'],
@@ -129,7 +127,7 @@ class PengeluaranController extends CI_Controller
 	}
 	public function edit($id)
 	{
-		$result = $this->pengeluaran->get("WHERE pengeluaran.id = '$id'");
+		$result = $this->pengeluaran->get(" WHERE id = '$id'");
 		// $sisa_stok = $this->pengeluaran->get_sisa_stok("WHERE id = '$id'");
 		$username = $result[0]['username'];
 		$id_stok = $result[0]['id_stok'];
@@ -139,12 +137,11 @@ class PengeluaranController extends CI_Controller
 			'id' => $id,
 			'kode_transaksi'      	=> $result[0]['kode_transaksi'],
 			'jumlah_keluar'     	=> $result[0]['jumlah_keluar'],
-			'sisa_stok'     		=> $result[0]['sisa_stok'],
 			'id_stok'     			=> $result[0]['id_stok'],
-			'kode_pemasukkan'    	=> $result[0]['kode_pemasukkan'],
 			'username'     			=> $username[0]['username'],
 			'deskripsi'    			=> $result[0]['deskripsi'],
 			'jenis_stok'   			=> $stok[0]['nama_barang'],
+			'jumlah_barang'   		=> $stok[0]['jumlah_barang'],
 			'updated_at'    		=> $result[0]['updated_at'],
 
 		);

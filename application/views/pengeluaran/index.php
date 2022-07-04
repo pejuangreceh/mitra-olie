@@ -29,9 +29,8 @@
             <th>Kode Pengeluaran</th>
             <th>Nama Stok</th>
             <th>Jumlah Keluar</th>
-            <th>Tanggal Keluar</th>
-            <th>Kode Pemasukkan</th>
             <th>Plat Nomor</th>
+            <th>Tanggal Keluar</th>
             <th>User</th>
             <th>Aksi</th>
         </tr>
@@ -46,9 +45,8 @@
                 <td><?php echo $pengeluaran->kode_transaksi; ?></td>
                 <td><?php echo $pengeluaran->nama_barang; ?></td>
                 <td><?php echo $pengeluaran->jumlah_keluar; ?></td>
-                <td><?php echo $pengeluaran->created_at; ?></td>
-                <td><?php echo $pengeluaran->kode_pemasukkan; ?></td>
                 <td><?php echo $pengeluaran->plat_nomor; ?></td>
+                <td><?php echo $pengeluaran->created_at; ?></td>
                 <td><?php echo $pengeluaran->username; ?></td>
                 <td width="90">
                     <a href="<?= base_url('PengeluaranController/detail/' . $pengeluaran->id) ?>"><i class="bi bi-arrow-right-square"></i></a>

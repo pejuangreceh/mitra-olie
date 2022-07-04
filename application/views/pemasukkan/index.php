@@ -30,7 +30,6 @@
             <th>Nama Stok</th>
             <th>jumlah masuk</th>
             <th>tanggal pemasukkan</th>
-            <th>Sisa Stok</th>
             <th>Aksi</th>
         </tr>
     </thead>
@@ -45,7 +44,6 @@
                 <td><?php echo $pemasukkan->nama_barang; ?></td>
                 <td><?php echo $pemasukkan->jumlah_masuk; ?></td>
                 <td><?php echo $pemasukkan->created_at; ?></td>
-                <td><?php echo $pemasukkan->sisa_stok; ?></td>
                 <td width="90">
                     <a href="<?= base_url('PemasukkanController/detail/' . $pemasukkan->id) ?>"><i class="bi bi-arrow-right-square"></i></a>
                     <a <?php if ($pemasukkan->sisa_stok != $pemasukkan->jumlah_masuk) { ?> hidden <?php   } ?> href="<?= base_url('PemasukkanController/edit/' . $pemasukkan->id) ?>"><i class="bi bi-pencil-square"></i></a>

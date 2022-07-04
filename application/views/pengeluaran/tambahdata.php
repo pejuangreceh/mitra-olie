@@ -2,6 +2,7 @@
     <div>
         <p><a href=" <?= base_url('PengeluaranController'); ?>"><button type="button" class="btn btn-primary">kembali</button></a></p>
     </div>
+
     <div class="d-flex justify-content-center">
         <h4><b>Tambah Data Pengeluaran</b></h4>
     </div>
@@ -19,17 +20,10 @@
         <label for="nama">Kode Transaksi</label>
         <input required="" class="form-control" type="text" name="kode_transaksi" value="<?php echo $new_id; ?>" readonly>
     </div>
+
     <div class="form-group">
         <label for="stok">Pilih Barang</label>
-        <select id="elements" class="form-control" aria-label="Default select example" name="kode_pemasukkan" required="">
-            <option value="">-</option>
-            <?php foreach ($pemasukkans as $pemasukkan) { ?>
-                <option data-nye="<?php echo $pemasukkan->sisa_stok; ?>" data-val="<?php echo $pemasukkan->id; ?>" value="<?php echo $pemasukkan->kode_transaksi; ?>"><?php echo $pemasukkan->kode_transaksi; ?> -- <?php echo $pemasukkan->nama_barang; ?> -- <?php echo 'sisa stok : ' . $pemasukkan->sisa_stok; ?></option>
-            <?php } ?>
-        </select>
-    </div>
-    <div class="form-group">
-        <select id="category" class="form-control" aria-label="Default select example" name="id_stok" required="" hidden>
+        <select id="category" class="form-control" aria-label="Default select example" name="id_stok" required="">
             <option value="">-</option>
             <?php foreach ($stoks as $stok) { ?>
                 <option value="<?php echo $stok->id; ?>"><?php echo $stok->nama_barang; ?> -- <?php echo $stok->jumlah_barang; ?></option>
@@ -43,7 +37,7 @@
     </div> -->
     <div class="form-group">
         <label for="plat_nomor">Plat Nomor</label>
-        <input class="form-control" type="text" name="plat_nomor">
+        <input class="form-control" type="text" name="plat_nomor" value="<?php echo $this->session->userdata('plat'); ?>">
     </div>
     <div class="form-group">
         <label for="deskripsi">Deskripsi</label>

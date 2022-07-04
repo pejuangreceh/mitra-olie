@@ -9,6 +9,7 @@ class pelanggan extends CI_Model
     }
     function read($number, $offset)
     {
+        $this->db->order_by('tanggal_daftar', 'asc');
         return $query = $this->db->get('pelanggan')->result();
     }
     function get($where = '')

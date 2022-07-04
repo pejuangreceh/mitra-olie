@@ -24,7 +24,7 @@
     </div>
     <div class="form-group">
         <label for="stok">Jumlah Keluar</label>
-        <input required="" class="form-control" type="number" name="jumlah_keluar" value="<?php echo $jumlah_keluar; ?>" min="1" max="<?php echo $jumlah_keluar + $sisa_stok; ?>">
+        <input required="" class="form-control" type="number" name="jumlah_keluar" value="<?php echo $jumlah_keluar; ?>" min="1" max="<?php echo $jumlah_barang; ?>">
     </div>
     <!-- <div class="form-group">
         <label for="stok">Sisa Stok</label>

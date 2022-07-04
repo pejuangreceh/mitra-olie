@@ -9,12 +9,14 @@ class pengeluaran extends CI_Model
     }
     function read($number, $offset, $username)
     {
-        if (($username != 'bes') && ($username != 'owner') && ($username != 'mekanik')) {
+        // kalau bukan admin / owner / mekanik akan menampilkan data usernya sendiri
+        if (($username != 'admin') && ($username != 'owner') && ($username != 'mekanik')) {
             $this->db->where('username', $username);
         }
-        $this->db->select('pengeluaran.id,pengeluaran.kode_transaksi,pengeluaran.jumlah_keluar,nama_barang,pengeluaran.kode_pemasukkan,pengeluaran.username,pengeluaran.created_at,pengeluaran.plat_nomor');
+        $this->db->select('pengeluaran.id,pengeluaran.kode_transaksi,pengeluaran.jumlah_keluar,nama_barang,pengeluaran.username,pengeluaran.created_at,pengeluaran.plat_nomor');
         $this->db->from('pengeluaran');
         $this->db->join('stok_barang', 'pengeluaran.id_stok=stok_barang.id');
+        $this->db->order_by('pengeluaran.created_at', 'desc');
         // $this->db->join('user', 'pengeluaran.id_user=user.id');
         // $this->db->limit($number, $offset);
         return $query = $this->db->get()->result();
@@ -61,8 +63,7 @@ class pengeluaran extends CI_Model
     function get($where = '')
     {
         $this->db->select('*');
-        $this->db->from('pengeluaran');
-        $this->db->join('pemasukkan', 'pengeluaran.kode_pemasukkan=pemasukkan.kode_transaksi ' . $where);
+        $this->db->from('pengeluaran' . $where);
         return $query = $this->db->get()->result_array();
     }
     function update($data, $where)
@@ -108,5 +109,13 @@ class pengeluaran extends CI_Model
     {
         $query = $this->db->query('select jumlah_barang from stok_barang WHERE id = ' . $id_stok);
         return $query->result_array();
+    }
+    function get_plat($where)
+    {
+        $this->db->where('id', $where);
+        $this->db->select('*');
+        $this->db->from('user');
+        $query = $this->db->get();
+        return $result = $query->row();
     }
 }

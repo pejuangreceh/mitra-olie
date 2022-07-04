@@ -13,8 +13,6 @@
     <dd class="col-sm-9"><?php echo $jumlah_keluar; ?></dd>
     <dt class="col-sm-3">Jenis Stok</dt>
     <dd class="col-sm-9"><?php echo $jenis_stok; ?></dd>
-    <dt class="col-sm-3">Kode Pemasukkan</dt>
-    <dd class="col-sm-9"><?php echo $kode_pemasukkan; ?></dd>
     <dt class="col-sm-3">Plat Nomor</dt>
     <dd class="col-sm-9"><?php echo $plat_nomor; ?></dd>
     <dt class="col-sm-3">User</dt>
