@@ -24,7 +24,7 @@ class DashboardController extends CI_Controller
 
 		if ($this->session->userdata('username')) {
 			if ($this->session->userdata('role') != 0) {
-				$data['ramals'] = $this->pemasukkan->get_3_bulan($where);
+				$data['ramals'] = $this->pemasukkan->get_1_tahun($where);
 				$data['masuks'] = $this->pemasukkan->get_oli_perbulan($where);
 				$data['bulans'] = $this->pemasukkan->get_bulan();
 				$data['stoks'] = $this->pemasukkan->get_stok();
@@ -43,7 +43,7 @@ class DashboardController extends CI_Controller
 	public function test($where = NULL)
 	{
 		if ($this->session->userdata('username')) {
-			$data = $this->pemasukkan->get_3_bulan($where);
+			$data = $this->pemasukkan->get_1_tahun($where);
 			$total = 0;
 			$hasil = 0;
 			foreach ($data as $object) {

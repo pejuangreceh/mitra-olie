@@ -34,7 +34,7 @@
     </select>
 </div>
 <div class="form-group px-1">
-    <h4>Prediksi Jumlah stok yang dibutuhkan bulan depan adalah : <?php echo ceil($hitung / 3); ?> </h4>
+    <h4>Prediksi Jumlah stok yang dibutuhkan bulan depan adalah : <?php echo ceil($hitung / 12); ?> </h4>
 </div>
 <div>
 

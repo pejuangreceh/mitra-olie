@@ -105,7 +105,8 @@ class pemasukkan extends CI_Model
 
         return $query->result();
     }
-    function get_3_bulan($where = NULL)
+
+    function get_1_tahun($where = NULL)
     {
         // $query = $this->db->query('SELECT * FROM pemasukkan WHERE created_at >= DATE_ADD(NOW(),INTERVAL -90 DAY) ');
         $this->db->select('*');
@@ -113,10 +114,10 @@ class pemasukkan extends CI_Model
         if ($where != NULL) {
             $this->db->where('id_stok', $where);
         }
-        $this->db->where('created_at >= DATE_ADD(NOW(),INTERVAL -90 DAY)');
+        $this->db->where('created_at >= DATE_ADD(NOW(),INTERVAL -365 DAY)');
         return $query = $this->db->get()->result();
     }
-    function get_3_bulan_sum($where = NULL)
+    function get_1_tahun_sum($where = NULL)
     {
         // $query = $this->db->query('SELECT * FROM pemasukkan WHERE created_at >= DATE_ADD(NOW(),INTERVAL -90 DAY) ');
         $this->db->select('SUM(jumlah_masuk)');
@@ -125,7 +126,7 @@ class pemasukkan extends CI_Model
         if ($where != NULL) {
             $this->db->where('id_stok', $where);
         }
-        $this->db->where('created_at >= DATE_ADD(NOW(),INTERVAL -90 DAY)');
+        $this->db->where('created_at >= DATE_ADD(NOW(),INTERVAL -365 DAY)');
         return $query = $this->db->get();
     }
 }
