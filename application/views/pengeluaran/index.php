@@ -32,6 +32,9 @@
             <th>Plat Nomor</th>
             <th>Tanggal Keluar</th>
             <th>User</th>
+            <?php if (($this->session->userdata('role') == '1') || ($this->session->userdata('role') == '3')) { ?>
+                <th>Status</th>
+            <?php } ?>
             <th>Aksi</th>
         </tr>
     </thead>
@@ -48,15 +51,20 @@
                 <td><?php echo $pengeluaran->plat_nomor; ?></td>
                 <td><?php echo $pengeluaran->created_at; ?></td>
                 <td><?php echo $pengeluaran->username; ?></td>
+                <?php if (($this->session->userdata('role') == '1') || ($this->session->userdata('role') == '3')) { ?>
+                    <td><?php echo $pengeluaran->status; ?></td>
+                <?php } ?>
                 <td width="90">
                     <a href="<?= base_url('PengeluaranController/detail/' . $pengeluaran->id) ?>"><i class="bi bi-arrow-right-square"></i></a>
-                    <?php if (($this->session->userdata('role') == '1') || ($this->session->userdata('role') == '3')) { ?>
+                    <?php if ((($this->session->userdata('role') == '1') || ($this->session->userdata('role') == '3')) && ($pengeluaran->status != 'selesai')) { ?>
                         <a href="<?= base_url('PengeluaranController/edit/' . $pengeluaran->id) ?>"><i class="bi bi-pencil-square"></i></a>
                         <a href="<?= base_url('PengeluaranController/delete/' . $pengeluaran->id) ?>" onclick="return confirm('Hapus Data?')"><i class="bi bi-file-x"></i></a>
+                        <?php if ($pengeluaran->jumlah_keluar > 0) { ?>
+                            <a href="<?= base_url('PengeluaranController/accept/' . $pengeluaran->id) ?>" onclick="return confirm('Verifikasi Data?')"><i class="bi bi-check-circle"></i></a>
+                        <?php } ?>
                     <?php } ?>
                 </td>
             </tr>
-
         <?php } ?>
 </table>
 <br>

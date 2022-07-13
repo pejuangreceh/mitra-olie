@@ -13,7 +13,7 @@ class pengeluaran extends CI_Model
         if (($username != 'admin') && ($username != 'owner') && ($username != 'mekanik')) {
             $this->db->where('username', $username);
         }
-        $this->db->select('pengeluaran.id,pengeluaran.kode_transaksi,pengeluaran.jumlah_keluar,nama_barang,pengeluaran.username,pengeluaran.created_at,pengeluaran.plat_nomor');
+        $this->db->select('pengeluaran.id,pengeluaran.kode_transaksi,pengeluaran.jumlah_keluar,nama_barang,pengeluaran.username,pengeluaran.created_at,pengeluaran.plat_nomor,pengeluaran.status');
         $this->db->from('pengeluaran');
         $this->db->join('stok_barang', 'pengeluaran.id_stok=stok_barang.id');
         $this->db->order_by('pengeluaran.created_at', 'desc');

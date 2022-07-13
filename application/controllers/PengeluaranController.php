@@ -94,6 +94,7 @@ class PengeluaranController extends CI_Controller
 				'deskripsi'   => $this->input->post('deskripsi'),
 				'created_at'   => $this->input->post('created_at'),
 				'updated_at'   => $this->input->post('updated_at'),
+				'status'   => 'baru',
 				'username'   => $this->session->userdata('username'),
 			);
 			$this->pengeluaran->create($data);
@@ -156,6 +157,7 @@ class PengeluaranController extends CI_Controller
 	{
 		$data = array(
 			'jumlah_keluar'   => $this->input->post('jumlah_keluar'),
+			'status' => 'proses',
 			'deskripsi'   => $this->input->post('deskripsi'),
 			'updated_at' => $this->input->post('updated_at'),
 		);
@@ -164,6 +166,21 @@ class PengeluaranController extends CI_Controller
 		}
 		if ($query) {
 			$this->session->set_flashdata('message', 'Data pengeluaran Barang <b>BERHASIL</b> DiUpdate');
+			redirect(base_url('PengeluaranController'));
+		} else {
+			echo $id;
+		}
+	}
+
+	public function accept($id)
+	{
+		$data = array(
+			'status' => 'selesai',
+			'updated_at' => $this->input->post('updated_at'),
+		);
+		$query = $this->pengeluaran->update($data, $id);
+		if ($query) {
+			$this->session->set_flashdata('message', 'Data pengeluaran Barang <b>BERHASIL</b> Di Verifikasi');
 			redirect(base_url('PengeluaranController'));
 		} else {
 			echo $id;
