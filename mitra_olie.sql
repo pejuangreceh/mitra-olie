@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 04, 2022 at 05:43 PM
+-- Generation Time: Jul 13, 2022 at 06:18 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -118,6 +118,7 @@ CREATE TABLE `pengeluaran` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `username` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL,
   `plat_nomor` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -125,10 +126,12 @@ CREATE TABLE `pengeluaran` (
 -- Dumping data for table `pengeluaran`
 --
 
-INSERT INTO `pengeluaran` (`id`, `kode_transaksi`, `id_stok`, `jumlah_keluar`, `deskripsi`, `created_at`, `updated_at`, `username`, `plat_nomor`) VALUES
-(44, 'K00001', 146, 2, 'coba', '2022-07-04 17:24:58', '2022-07-04 17:28:44', 'pelanggan', 'N 1234 OO'),
-(45, 'K00002', 138, 3, 'coba 2', '2022-07-04 17:28:05', '2022-07-04 17:28:34', 'user', 'B 9900 P'),
-(46, 'K00003', 139, 0, 'coba 3', '2022-07-04 17:29:10', '2022-07-04 17:29:10', 'pelanggan', 'N 1234 UU');
+INSERT INTO `pengeluaran` (`id`, `kode_transaksi`, `id_stok`, `jumlah_keluar`, `deskripsi`, `created_at`, `updated_at`, `username`, `status`, `plat_nomor`) VALUES
+(44, 'K00001', 146, 2, 'coba', '2022-07-04 17:24:58', '2022-07-04 17:28:44', 'pelanggan', 'selesai', 'N 1234 OO'),
+(45, 'K00002', 138, 3, 'coba 2', '2022-07-04 17:28:05', '2022-07-04 17:28:34', 'user', 'selesai', 'B 9900 P'),
+(46, 'K00003', 139, 1, 'coba 3', '2022-07-04 17:29:10', '2022-07-13 04:45:35', 'pelanggan', 'selesai', 'N 1234 UU'),
+(47, 'K00004', 363, 0, 'mari kita coba', '2022-07-13 04:48:54', '2022-07-13 04:48:54', 'user', 'baru', 'B 9900 PA'),
+(48, 'K00005', 138, 1, 'ini coba dari admin lagi', '2022-07-13 05:10:58', '0000-00-00 00:00:00', 'admin', 'selesai', 'coba dari admin');
 
 --
 -- Triggers `pengeluaran`
@@ -168,8 +171,8 @@ CREATE TABLE `stok_barang` (
 --
 
 INSERT INTO `stok_barang` (`id`, `nama_barang`, `jumlah_barang`, `harga`, `deskripsi`, `created_at`, `updated_at`, `total_transaksi_masuk`) VALUES
-(138, 'Oli Samping', 97, '75000', 'Ini adalah Oli Samping edited', '2021-12-01 11:13:37', '0000-00-00 00:00:00', 1),
-(139, 'Oli Gardan', 200, '75000', 'Oli Garda pertama', '2021-12-06 11:13:35', '0000-00-00 00:00:00', 1),
+(138, 'Oli Samping', 96, '75000', 'Ini adalah Oli Samping edited', '2021-12-01 11:13:37', '0000-00-00 00:00:00', 1),
+(139, 'Oli Gardan', 199, '75000', 'Oli Garda pertama', '2021-12-06 11:13:35', '0000-00-00 00:00:00', 1),
 (146, 'Oli Mesin', 148, '75000', 'Oli mesin nih', '2021-12-09 11:13:28', '2021-12-15 05:13:07', 1),
 (363, 'Oli percobaan', 250, '35000', 'ini coba coba', '2022-06-13 17:08:12', '2022-06-13 17:08:12', 1);
 
@@ -287,7 +290,7 @@ ALTER TABLE `pemasukkan`
 -- AUTO_INCREMENT for table `pengeluaran`
 --
 ALTER TABLE `pengeluaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `stok_barang`
