@@ -113,9 +113,11 @@ class pemasukkan extends CI_Model
 
     function get_ramalan($where = NULL)
     {
-        $this->db->select('p.id,p.periode,p.ramal_1,p.ramal_2,p.ramal_3,p.ramal_4,p.ramal_5,p.ramal_6,p.ramal_7,p.ramal_8,p.ramal_9,p.created_at,s.nama_barang');
+        $this->db->where('p.id_stok',146);
+        $this->db->select('p.id,p.periode,p.ramal_1,p.ramal_2,p.ramal_3,p.ramal_4,p.ramal_5,p.ramal_6,p.ramal_7,p.ramal_8,p.ramal_9,p.created_at,s.nama_barang,m.jumlah_masuk');
         $this->db->from('peramalan p');
         $this->db->join('stok_barang s', 's.id=p.id_stok', 'left');
+        $this->db->join('pemasukkan m', 'm.kode_transaksi=p.kode_transaksi', 'left');
         if ($where != NULL) {
                 $this->db->where('id_stok', $where); 
         }

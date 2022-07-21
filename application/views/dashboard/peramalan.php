@@ -61,32 +61,44 @@
             <th>Nama Barang</th>
             <th>Periode</th>
             <th>Created At</th>
+            <?php if ($alpha != 0){?>
+                <th>Xt</th>
+            <?php } ?>
             <?php if (($alpha == 0) || ($alpha == 1) ){?>
-                <th>0.1</th>
+                <th>Ft 0.1</th>
             <?php } ?>
             <?php if (($alpha == 0) || ($alpha == 2) ){?>
-                <th>0.2</th>
+                <th>Ft 0.2</th>
             <?php } ?>
             <?php if (($alpha == 0) || ($alpha == 3) ){?>
-                <th>0.3</th>
+                <th>Ft 0.3</th>
             <?php } ?>
             <?php if (($alpha == 0) || ($alpha == 4) ){?>
-                <th>0.4</th>
+                <th>Ft 0.4</th>
             <?php } ?>
             <?php if (($alpha == 0) || ($alpha == 5) ){?>
-                <th>0.5</th>
+                <th>Ft 0.5</th>
             <?php } ?>
             <?php if (($alpha == 0) || ($alpha == 6) ){?>
-                <th>0.6</th>
+                <th>Ft 0.6</th>
             <?php } ?>
             <?php if (($alpha == 0) || ($alpha == 7) ){?>
-                <th>0.7</th>
+                <th>Ft 0.7</th>
             <?php } ?>
             <?php if (($alpha == 0) || ($alpha == 8) ){?>
-                <th>0.8</th>
+                <th>Ft 0.8</th>
             <?php } ?>
             <?php if (($alpha == 0) || ($alpha == 9) ){?>
-                <th>0.9</th>
+                <th>Ft 0.9</th>
+            <?php } ?>
+            <?php if ($alpha != 0){?>
+                <th>Et</th>
+            <?php } ?>
+            <?php if ($alpha != 0){?>
+                <th>Absolute</th>
+            <?php } ?>
+            <?php if ($alpha != 0){?>
+                <th>Absolute / Xt</th>
             <?php } ?>
         </tr>
     </thead>
@@ -101,33 +113,51 @@
                 <td><?php echo $ramal->nama_barang; ?></td>
                 <td><?php echo $ramal->periode; ?></td>
                 <td><?php echo $ramal->created_at; ?></td>
+                <?php if ($alpha != 0){?>
+                <td><?php echo $ramal->jumlah_masuk; ?></td>
+                <?php } ?>
                 <?php if (($alpha == 0) || ($alpha == 1) ){?>
                     <td><?php echo $ramal->ramal_1; ?></td>
-                <?php } ?>
+                <?php $ramal_fix = $ramal->ramal_1;} ?>
                 <?php if (($alpha == 0) || ($alpha == 2) ){?>
                     <td><?php echo $ramal->ramal_2; ?></td>
-                <?php } ?>   
+                <?php $ramal_fix = $ramal->ramal_2;} ?>   
                 <?php if (($alpha == 0) || ($alpha == 3) ){?>
                     <td><?php echo $ramal->ramal_3; ?></td>
-                <?php } ?>   
+                <?php $ramal_fix = $ramal->ramal_3;} ?>   
                 <?php if (($alpha == 0) || ($alpha == 4) ){?>
                     <td><?php echo $ramal->ramal_4; ?></td>
-                <?php } ?>   
+                <?php $ramal_fix = $ramal->ramal_4;} ?>   
                 <?php if (($alpha == 0) || ($alpha == 5) ){?>
                     <td><?php echo $ramal->ramal_5; ?></td>
-                <?php } ?>                   
+                <?php $ramal_fix = $ramal->ramal_5;} ?>                   
                 <?php if (($alpha == 0) || ($alpha == 6) ){?>
                     <td><?php echo $ramal->ramal_6; ?></td>
-                <?php } ?>   
+                <?php $ramal_fix = $ramal->ramal_6;} ?>   
                 <?php if (($alpha == 0) || ($alpha == 7) ){?>
                     <td><?php echo $ramal->ramal_7; ?></td>
-                <?php } ?>   
+                <?php $ramal_fix = $ramal->ramal_7;} ?>   
                 <?php if (($alpha == 0) || ($alpha == 8) ){?>
                     <td><?php echo $ramal->ramal_8; ?></td>
-                <?php } ?>   
+                <?php $ramal_fix = $ramal->ramal_8;} ?>   
                 <?php if (($alpha == 0) || ($alpha == 9) ){?>
                     <td><?php echo $ramal->ramal_9; ?></td>
-                <?php } ?>    
+                <?php $ramal_fix = $ramal->ramal_9;} ?>
+                <?php if ($alpha != 0){?>
+                <td><?php echo $ramal_fix - $ramal->jumlah_masuk; ?></td>
+                <?php } ?>
+                <?php if ($alpha != 0){?>
+                <td><?php echo abs($ramal_fix - $ramal->jumlah_masuk); ?></td>
+                <?php } ?>
+                <?php if ($alpha != 0){?>
+                <td><?php if ($ramal->jumlah_masuk != NULL) {
+                    echo abs(($ramal_fix - $ramal->jumlah_masuk)/$ramal->jumlah_masuk); 
+                } else{
+                    echo '0';
+                }
+                ?></td>
+                <?php } ?>
+                    
             </tr>
 
         <?php } ?>
