@@ -119,7 +119,7 @@ class pemasukkan extends CI_Model
         $this->db->join('stok_barang s', 's.id=p.id_stok', 'left');
         $this->db->join('pemasukkan m', 'm.kode_transaksi=p.kode_transaksi', 'left');
         if ($where != NULL) {
-                $this->db->where('id_stok', $where); 
+                $this->db->where('p.id_stok', $where); 
         }
         $this->db->order_by("created_at", "DESC");
         // $this->db->limit(1);

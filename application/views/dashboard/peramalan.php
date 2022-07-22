@@ -104,6 +104,7 @@
     </thead>
     <tbody>
         <?php
+        $hasil = [];
         $no = $this->uri->segment('3') + 1;
         foreach ($ramals as $ramal) {
         ?>
@@ -144,6 +145,7 @@
                     <td><?php echo $ramal->ramal_9; ?></td>
                 <?php $ramal_fix = $ramal->ramal_9;} ?>
                 <?php if ($alpha != 0){?>
+                <?php $hasil[$ramal->ramal_9] = $ramal_fix; ?>
                 <td><?php echo $ramal_fix - $ramal->jumlah_masuk; ?></td>
                 <?php } ?>
                 <?php if ($alpha != 0){?>
@@ -154,14 +156,17 @@
                     echo abs(($ramal_fix - $ramal->jumlah_masuk)/$ramal->jumlah_masuk); 
                 } else{
                     echo '0';
-                }
-                ?></td>
+                }?>
+                </td>
                 <?php } ?>
                     
             </tr>
 
         <?php } ?>
 </table>
+</div>
+<div>
+    <canvas id="myChart"></canvas>
 </div>
 <div>
 
@@ -174,7 +179,45 @@
 <script type="text/javascript">
     document.getElementById('category').value = "<?php echo $_GET['category']; ?>";
 </script>
+<script>
+    const labels = [];
 
+    const data = {
+        labels: [<?php foreach ($ramals as $ramal) {
+                        $bln = date("M", strtotime($ramal->periode));
+                        echo "'$bln'" . ',';
+                    } ?>],
+        datasets: [{
+            type: 'line',
+            label: 'Jumlah Masuk',
+            data: [<?php foreach ($ramals as $ramal) {
+                $nama_barang = $ramal->nama_barang;
+                echo $ramal->jumlah_masuk . ",";
+            }?>],
+            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: 'rgba(255, 99, 132, 0.2)'
+        }, {
+            type: 'line',
+            label: 'Peramalan',
+            data: [<?php foreach ($hasil as $hasil_fix) {
+                echo $hasil_fix . ",";
+            }?>],
+            fill: false,
+            borderColor: 'rgb(54, 162, 235)'
+        }]
+        };
+            const config = {
+            type: 'scatter',
+            data: data,
+            options: {
+                scales: {
+                y: {
+                    beginAtZero: true
+                }
+                }
+            }
+            };
+</script>
 <script>
     const myChart = new Chart(
         document.getElementById('myChart'),
