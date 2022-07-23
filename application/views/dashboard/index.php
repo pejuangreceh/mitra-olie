@@ -10,7 +10,7 @@
     </div>
 </div> -->
 <!-- /TABEL PERAMALAN -->
-<div class="row" style="margin-bottom: 20px">
+<!-- <div class="row" style="margin-bottom: 20px">
     <div class="form-group px-1">
         <div class="col-md-2">
             <select onchange="if (this.value) window.location.href='<?php echo base_url('DashboardController/index/') ?>'+ this.value" id="category" class="form-control" aria-label="Default select example" name="category" required="">
@@ -23,7 +23,7 @@
         </div>
 
     </div>
-</div>
+</div> -->
 <div class="form-group px-1">
     <!-- <h4>0.9 Prediksi Jumlah stok yang dibutuhkan bulan depan adalah : <?php echo $ramals[0]->ramal_9; ?> </h4> -->
 </div>

@@ -17,7 +17,7 @@ class DashboardController extends CI_Controller
 		$data = $this->pemasukkan->get_bulan();
 		echo json_encode($data);
 	}
-	public function index($where = 138)
+	public function index($where = 146)
 	{
 		// kalo mau cek siapa yang login, hapus komennya aja
 		// var_dump($this->session->userdata());
