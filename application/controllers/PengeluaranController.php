@@ -86,10 +86,12 @@ class PengeluaranController extends CI_Controller
 			$this->load->view('pengeluaran/tambahdata');
 			$this->load->view('template/footer');
 		} else {
+			$plat_nomor = $this->input->post('plat_nomor1').' '.$this->input->post('plat_nomor2').' '.$this->input->post('plat_nomor3');
+			
 			$data = array(
 				'kode_transaksi'    => $this->input->post('kode_transaksi'),
 				'id_stok'   => $this->input->post('id_stok'),
-				'plat_nomor'   => $this->input->post('plat_nomor'),
+				'plat_nomor'   => $plat_nomor,
 				'jumlah_keluar'   => 0,
 				'deskripsi'   => $this->input->post('deskripsi'),
 				'created_at'   => $this->input->post('created_at'),
@@ -105,16 +107,16 @@ class PengeluaranController extends CI_Controller
 	public function detail($id)
 	{
 		$result = $this->pengeluaran->get(" WHERE id = '$id'");
-		$username = $result[0]['username'];
+		// $username = $result[0]['username'];
 		$id_stok = $result[0]['id_stok'];
 		$stok = $this->pengeluaran->get_oli("WHERE id = '$id_stok'");
-		$username = $this->pengeluaran->get_user("WHERE username = '$username'");
+		// $username = $this->pengeluaran->get_user("WHERE username = '$username'");
 		$data = array(
 			'kode_transaksi'      	=> $result[0]['kode_transaksi'],
 			'jumlah_keluar'     	=> $result[0]['jumlah_keluar'],
 			'id_stok'     			=> $result[0]['id_stok'],
 			'plat_nomor'    		=> $result[0]['plat_nomor'],
-			'username'     			=> $username[0]['username'],
+			// 'username'     			=> $username[0]['username'],
 			'deskripsi'    			=> $result[0]['deskripsi'],
 			'jenis_stok'   			=> $stok[0]['nama_barang'],
 			'created_at'    		=> $result[0]['created_at'],

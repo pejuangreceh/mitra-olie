@@ -17,15 +17,20 @@
         <label for="stok">Pilih Alpha</label>
         <select class="form-control" aria-label="Default select example" name="id_alpha" required="">
                 <option <?php if($alpha == 0){echo 'selected';} ?> value="0">Semua</option>
+                <?php if($dashboard == 'Analisa'){ ?>
                 <option <?php if($alpha == 1){echo 'selected';} ?> value="1">0.1</option>
                 <option <?php if($alpha == 2){echo 'selected';} ?> value="2">0.2</option>
                 <option <?php if($alpha == 3){echo 'selected';} ?> value="3">0.3</option>
                 <option <?php if($alpha == 4){echo 'selected';} ?> value="4">0.4</option>
                 <option <?php if($alpha == 5){echo 'selected';} ?> value="5">0.5</option>
                 <option <?php if($alpha == 6){echo 'selected';} ?> value="6">0.6</option>
+                <?php }?>
                 <option <?php if($alpha == 7){echo 'selected';} ?> value="7">0.7</option>
+                <?php if($dashboard == 'Analisa'){ ?>
+                    
                 <option <?php if($alpha == 8){echo 'selected';} ?> value="8">0.8</option>
                 <option <?php if($alpha == 9){echo 'selected';} ?> value="9">0.9</option>
+                <?php }?>
         </select>
         </div>
         <div class="col-md-2">
@@ -153,7 +158,7 @@
                 <?php } ?>
                 <?php if ($alpha != 0){?>
                 <td><?php if ($ramal->jumlah_masuk != NULL) {
-                    echo abs(($ramal_fix - $ramal->jumlah_masuk)/$ramal->jumlah_masuk); 
+                    echo round(abs($ramal_fix - $ramal->jumlah_masuk)/$ramal->jumlah_masuk,3); 
                 } else{
                     echo '0';
                 }?>

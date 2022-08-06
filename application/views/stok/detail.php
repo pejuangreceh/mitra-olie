@@ -12,7 +12,7 @@
     <dt class="col-sm-3">Jumlah Barang</dt>
     <dd class="col-sm-9"><?php echo $jumlah_barang; ?></dd>
     <dt class="col-sm-3">Harga</dt>
-    <dd class="col-sm-9"><?php echo $harga; ?></dd>
+    <dd class="col-sm-9"><?php echo 'Rp '.number_format($harga,2,",","."); ?></dd>
     <dt class="col-sm-3">Deskripsi</dt>
     <dd class="col-sm-9"><?php echo $deskripsi; ?></dd>
 

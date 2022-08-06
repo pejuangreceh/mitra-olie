@@ -60,29 +60,31 @@ class Login extends CI_Controller
 		$this->form_validation->set_rules('username', 'Username', 'required|is_unique[user.username]');
 		$this->form_validation->set_rules('password', 'Password', 'required');
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required');
-		$this->form_validation->set_rules('alamat', 'no_telepon', 'required');
-		$this->form_validation->set_rules('alamat', 'plat_nomor', 'required');
+		$this->form_validation->set_rules('no_telepon1', 'no_telepon1', 'required');
+		$this->form_validation->set_rules('no_telepon2', 'no_telepon2', 'required');
+		$this->form_validation->set_rules('no_telepon3', 'no_telepon3', 'required');
 		if ($this->form_validation->run() == FALSE) {
-			$this->session->set_flashdata('message', 'Data Pelanggan <b>GAGAL</b> Ditambahkan');
+			$this->session->set_flashdata('message', 'Data Mekanik <b>GAGAL</b> Ditambahkan');
 			$this->load->view('template/header');
 			$this->load->view('template/navbar');
 			$this->load->view('login/daftar');
 			$this->load->view('template/footer');
 		} else {
+			$telepon = '+62-'.$this->input->post('no_telepon1').'-'.$this->input->post('no_telepon2').'-'.$this->input->post('no_telepon3');
 			$data = array(
 				'name'    => $this->input->post('name'),
 				'username'   => $this->input->post('username'),
 				'password'   => md5($this->input->post('password')),
 				'alamat'   => $this->input->post('alamat'),
-				'no_telepon'   => $this->input->post('no_telepon'),
-				'plat_nomor'   => $this->input->post('plat_nomor'),
-				'user_level'   => 0,
+				'no_telepon'   => $telepon,
+				// 'plat_nomor'   => $this->input->post('plat_nomor'),
+				'user_level'   => 3,
 				'tanggal_daftar'   => $this->input->post('tanggal_daftar'),
 				'tanggal_servis'   => $this->input->post('tanggal_servis'),
 			);
 			$this->pelanggan->create($data);
 			$this->user->create($data);
-			$this->session->set_flashdata('message', 'Data Pelanggan <b>BERHASIL</b> Ditambahkan');
+			$this->session->set_flashdata('message', 'Data Mekanik <b>BERHASIL</b> Ditambahkan');
 			$this->session->set_flashdata('daftar_sukses', 'yes');
 			redirect(base_url('login'));
 		}

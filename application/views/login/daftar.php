@@ -7,7 +7,7 @@
         <?php } ?>
         <div class="row g-5">
             <div class="col-md-7 col-lg-8">
-                <h4 class="mb-3"><b>Pendaftaran Pelanggan</b></h4>
+                <h4 class="mb-3"><b>Pendaftaran Mekanik</b></h4>
                 <form class="needs-validation" novalidate method="POST" action="<?php echo base_url('Login/simpan'); ?>">
                     <div class="row g-3">
                         <div class="col-12">
@@ -42,20 +42,41 @@
                                 Alamat tidak boleh kosong
                             </div>
                         </div>
-                        <div class="col-12">
-                            <label for="address" class="form-label">No Telepon</label>
-                            <input type="number" name="no_telepon" class="form-control" id="address" placeholder="" required onfocus="startCalculate()" onblur="stopCalc()">
+                        <div class="col-2">
+                            <label  for="address" class="form-label">No</label>
+                            <input type="text" maxlength="3" readonly class="form-control" id="address" placeholder="" value="+62">
                             <div class="invalid-feedback">
                                 Nomor Telepon tidak boleh kosong
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-2">
+                            <label for="address" class="form-label">Telepon</label>
+                            <input type="number" max="9999" name="no_telepon1" class="form-control" id="address" placeholder="" required onfocus="startCalculate()" onblur="stopCalc()">
+                            <div class="invalid-feedback">
+                                Nomor Telepon tidak boleh kosong
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <label for="address" class="form-label">.</label>
+                            <input type="number" max="9999" name="no_telepon2" class="form-control" id="address" placeholder="" required onfocus="startCalculate()" onblur="stopCalc()">
+                            <div class="invalid-feedback">
+                                Nomor Telepon tidak boleh kosong
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <label for="address" class="form-label">.</label>
+                            <input type="number" max="9999" name="no_telepon3" class="form-control" id="address" placeholder="" required onfocus="startCalculate()" onblur="stopCalc()">
+                            <div class="invalid-feedback">
+                                Nomor Telepon tidak boleh kosong
+                            </div>
+                        </div>
+                        <!-- <div class="col-12">
                             <label for="address" class="form-label">Plat Nomor</label>
-                            <input type="text" name="plat_nomor" class="form-control" id="address" placeholder="Plat Nomor Anda" required>
+                            <input type="text" name="plat_nomor" class="form-control" id="address" placeholder="Plat Nomor Anda">
                             <div class="invalid-feedback">
                                 Plat Nomor
                             </div>
-                        </div>
+                        </div> -->
                         <input type="hidden" name="tanggal_daftar" value=" <?php echo date("Y-m-d H:i:s"); ?>">
                         <input type="hidden" name="tanggal_servis" value=" <?php echo date("Y-m-d H:i:s"); ?>">
                         <div class="col-6">

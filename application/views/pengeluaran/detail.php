@@ -15,8 +15,8 @@
     <dd class="col-sm-9"><?php echo $jenis_stok; ?></dd>
     <dt class="col-sm-3">Plat Nomor</dt>
     <dd class="col-sm-9"><?php echo $plat_nomor; ?></dd>
-    <dt class="col-sm-3">User</dt>
-    <dd class="col-sm-9"><?php echo $username; ?></dd>
+    <!-- <dt class="col-sm-3">User</dt>
+    <dd class="col-sm-9"><?php echo $username; ?></dd> -->
     <dt class="col-sm-3">Deskripsi</dt>
     <dd class="col-sm-9"><?php echo $deskripsi; ?></dd>
     <dt class="col-sm-3">Created at</dt>

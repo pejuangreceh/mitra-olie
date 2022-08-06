@@ -43,7 +43,7 @@
                 <td><?php echo $no++; ?></td>
                 <td><?php echo $stok->nama_barang; ?></td>
                 <td><?php echo $stok->jumlah_barang; ?></td>
-                <td><?php echo $stok->harga; ?></td>
+                <td><?php echo 'Rp '.number_format($stok->harga,2,",","."); ?></td>
                 <td><?php echo $stok->created_at; ?></td>
                 <td width="90">
                     <a href="<?= base_url('StokController/detail/' . $stok->id) ?>"><i class="bi bi-arrow-right-square"></i></a>

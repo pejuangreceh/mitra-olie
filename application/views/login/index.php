@@ -26,6 +26,6 @@
         <label class="col-form-label" for="password">Password</label>
         <input type="password" class="form-control" name="password" placeholder="password" id="password" required="">
     </div>
-    <button type="submit" class="btn btn-primary">Login</button> <a href="<?= base_url('Login/daftar'); ?>">Daftar</a>
+    <button type="submit" class="btn btn-primary">Login</button> <a href="<?= base_url('Login/daftar'); ?>">Daftar Mekanik</a>
 </form>
 <br />

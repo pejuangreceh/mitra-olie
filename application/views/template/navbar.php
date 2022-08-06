@@ -19,12 +19,17 @@
                 </li> -->
                 <?php if (($this->session->userdata('role') == 1) || ($this->session->userdata('role') == 2) || ($this->session->userdata('role') == 3)) { ?>
                     <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dashboard</a>
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Analisa Penelitian</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="<?= base_url(); ?>">Grafik</a>
                         <a class="dropdown-item" href="<?= base_url('DashboardController/peramalan/'); ?>">Peramalan</a>
                     </div>
                 </li>
+                <?php } ?>
+                <?php if (($this->session->userdata('role') == 1) || ($this->session->userdata('role') == 2) || ($this->session->userdata('role') == 3)) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('DashboardController/peramalan7/'); ?>">Dashboard Bengkel<span class="sr-only"></span></a>
+                    </li>
                 <?php } ?>
                 <?php if (($this->session->userdata('role') == 1) || ($this->session->userdata('role') == 2) || ($this->session->userdata('role') == 3)) { ?>
                     <li class="nav-item">

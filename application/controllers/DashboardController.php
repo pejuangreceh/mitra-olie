@@ -48,6 +48,30 @@ class DashboardController extends CI_Controller
 		if ($this->session->userdata('username')) {
 			if ($this->session->userdata('role') != 0) {
 				// $data['asd'];
+				$data['dashboard'] = 'Analisa';
+				$data['alpha'] = $this->input->post('id_alpha');
+				$data['ramals'] = $this->pemasukkan->get_ramalan();
+				$data['my_uri'] = $this->uri->segment(3);
+				$this->load->view('template/header');
+				$this->load->view('template/navbar');
+				$this->load->view('dashboard/peramalan', $data);
+				$this->load->view('template/footer');
+			} else {
+				redirect(base_url('PengeluaranController'));
+			}
+		} else {
+			redirect(base_url());
+		}
+	}
+	public function peramalan7($alpha = NULL)
+	{
+		// kalo mau cek siapa yang login, hapus komennya aja
+		// var_dump($this->session->userdata());
+
+		if ($this->session->userdata('username')) {
+			if ($this->session->userdata('role') != 0) {
+				// $data['asd'];
+				$data['dashboard'] = 'bengkel';
 				$data['alpha'] = $this->input->post('id_alpha');
 				$data['ramals'] = $this->pemasukkan->get_ramalan();
 				$data['my_uri'] = $this->uri->segment(3);

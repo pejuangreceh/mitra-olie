@@ -1,0 +1,7 @@
+    hilangkan user dan daftar user / pelanggan
+    Daftar jadi Mekanik
+    tambahkan format currency pada stok barang
+    Dashboard diganti Analisa Penelitian
+    Tambahkan Peramalan baru (Dashboard Bengkel) dengan pilihan semua dan alpha 0.7
+    Plat Nomor pada Pengeluaran / Ganti Oli dibuat 3 field
+    No Telepon +62-812-1234-89766
